@@ -19,6 +19,17 @@
 body {
   background: radial-gradient(circle at top left, #e3f1ff, #f6f8fc 55%);
   color: var(--text-main);
+  animation: fadeIn 1s ease-out; /* Adding a fade-in animation to the body */
+}
+
+/* Animation for fading in content */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .page {
@@ -34,74 +45,82 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2.3rem;
+  animation: fadeIn 1s ease-out; /* Fade-in for the navigation */
 }
 
 .nav-left {
   display: flex;
   align-items: center;
-  gap: 1.8rem; 
+  gap: 1.8rem;
 }
 
 .logo-img {
-  height: 80px; /* adjust if needed */
+  height: 80px;
   width: auto;
-  border-radius: 12px;       /* smooth rounded corners */
-  padding: 4px;              /* subtle spacing inside */
-  background: #ffffff;       /* white card background */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12); /* soft shadow */
+  border-radius: 12px;
+  padding: 4px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .logo-text {
   font-weight: 700;
-  font-size: 1.25rem;         /* tiny bit smaller */
+  font-size: 1.25rem;
   letter-spacing: 0.02em;
-  color: var(--blue-main);    /* was dark text */
+  color: var(--blue-main);
 }
 
 .nav-right .nav-link {
   text-decoration: none;
-  padding: 0.7rem 1.5rem;   /* slightly larger */
+  padding: 0.7rem 1.5rem;
   border-radius: 999px;
   border: 1px solid var(--blue-light);
   color: var(--blue-main);
-  font-size: 1rem;          /* was 0.95rem */
+  font-size: 1rem;
   background: #ffffffaa;
+  transition: background-color 0.3s ease;
+}
+
+.nav-right .nav-link:hover {
+  background-color: var(--blue-accent);
 }
 
 /* HERO */
 
 .hero {
   display: flex;
-  gap: 3.2rem;
+  gap: 4rem;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 3.8rem;
+  margin-bottom: 5rem;
   flex-wrap: wrap;
+  animation: fadeIn 1.2s ease-out; /* Fade-in for the hero section */
 }
 
 .hero-text {
   flex: 1 1 340px;
+  margin-bottom: 2rem;
 }
+
 .pill {
   display: inline-flex;
   padding: 0.35rem 1.1rem;
   border-radius: 999px;
   font-size: 1rem;
-  background: rgba(167, 211, 243, 0.25); /* softer transparent blue */
+  background: rgba(167, 211, 243, 0.25);
   color: var(--blue-main);
   margin-bottom: 1.3rem;
   box-shadow: 0 6px 14px rgba(15, 23, 42, 0.10);
 }
 
-
 .hero h1 {
-  font-size: 3.8rem; /* was 3.1rem */
+  font-size: 3.8rem;
   line-height: 1.1;
   margin-bottom: 1.1rem;
 }
 
 .hero-sub {
-  font-size: 1.2rem; /* was 1.05rem */
+  font-size: 1.2rem;
   line-height: 1.7;
   color: var(--text-secondary);
   max-width: 520px;
@@ -110,17 +129,18 @@ body {
 .hero-ctas {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin: 2rem 0 1.1rem;
+  gap: 1.4rem;
+  margin: 2.5rem 0;
 }
 
 .btn-primary,
 .btn-ghost {
-  padding: 1rem 2.3rem;      /* was 0.9rem 1.9rem */
+  padding: 1rem 2.3rem;
   border-radius: 999px;
-  font-size: 1.1rem;         /* was 1rem */
+  font-size: 1.1rem;
   font-weight: 600;
   text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn-primary {
@@ -135,11 +155,17 @@ body {
   background: #ffffffdd;
 }
 
+.btn-primary:hover,
+.btn-ghost:hover {
+  transform: scale(1.05);
+  box-shadow: 0 16px 30px rgba(11, 111, 183, 0.28);
+}
+
 .hero-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.7rem 1.2rem;
-  font-size: 1rem; /* was 0.95rem */
+  font-size: 1rem;
   color: var(--text-secondary);
 }
 
@@ -150,15 +176,16 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 3rem;
 }
 
 .phone-frame {
   position: relative;
-  width: 290px; /* slightly bigger */
+  width: 300px;
   max-width: 80vw;
   aspect-ratio: 9 / 18;
   border-radius: 38px;
-  padding: 10px;
+  padding: 12px;
   background: #020617;
   box-shadow: 0 28px 55px rgba(15, 23, 42, 0.6);
 }
@@ -194,31 +221,92 @@ body {
   color: var(--text-secondary);
 }
 
-/* FEATURES */
-
+/* FEATURES - flexbox and animations */
 .features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.6rem;
-  margin-bottom: 3.2rem;
+  display: flex;
+  justify-content: space-between; /* Distribute evenly */
+  gap: 2rem;
+  margin-bottom: 4rem;
+  animation: fadeIn 1s ease-out; /* Fade-in for the features section */
 }
 
 .feature-card {
-  background: #ffffff;
-  border-radius: 20px;
-  padding: 1.6rem 1.4rem;
+  flex: 1 1 calc(33.333% - 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 12px;
+  background: #fff;
   box-shadow: 0 12px 28px rgba(148, 163, 184, 0.24);
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideInUp 1s ease-out forwards;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.feature-card:hover {
+  transform: translateY(-10px); /* moves card upward */
+  box-shadow: 0 20px 40px rgba(148, 163, 184, 0.32); 
+
 }
 
 .feature-card h3 {
-  font-size: 1.35rem; /* was 1.25rem */
+  font-size: 1.3rem;
   margin-bottom: 0.8rem;
 }
 
 .feature-card p {
-  font-size: 1.02rem; /* was 0.98rem */
+  font-size: 1.02rem;
   line-height: 1.7;
   color: var(--text-secondary);
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  opacity: 0; /* Start hidden */
+  transform: translateY(30px); /* Start lower */
+  animation: fadeIn 1s ease-out forwards; /* Apply the animation */
+}
+.hero-text,
+.hero-phone,
+.feature-card {
+  animation-delay: 0.3s; /* Delay for sequential animation */
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes subtleBounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px); /* Subtle bounce up */
+  }
+  100% {
+    transform: translateY(-2px); /* Settle slightly above the original position */
+  }
 }
 
 /* STATUS / DOWNLOAD */
@@ -229,7 +317,7 @@ body {
 }
 
 .status h2 {
-  font-size: 1.8rem; /* was 1.6rem */
+  font-size: 1.8rem;
   margin-bottom: 0.9rem;
 }
 
@@ -237,7 +325,7 @@ body {
   max-width: 620px;
   margin: 0 auto 1.5rem;
   color: var(--text-secondary);
-  font-size: 1.05rem; /* was 1rem */
+  font-size: 1.05rem;
   line-height: 1.7;
 }
 
@@ -287,7 +375,7 @@ body {
   }
 
   .hero h1 {
-    font-size: 2.7rem; /* larger on mobile too */
+    font-size: 2.7rem;
   }
 
   .hero-sub {
@@ -297,4 +385,14 @@ body {
   .page {
     padding: 1.5rem 1.1rem 2.6rem;
   }
+
+  .features {
+    flex-direction: column; /* Stack vertically on mobile */
+  }
+
+  .feature-card {
+    margin-bottom: 1rem;
+    width: 100%; /* Full width for mobile */
+  }
+
 }
